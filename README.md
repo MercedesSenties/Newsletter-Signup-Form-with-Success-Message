@@ -26,5 +26,5 @@ Instructions:
 
 # *** Sample Images ***
 ---------------------------------------
-![sample 1] (https://github.com/MercedesSenties/ToolApp/sample1.jpg?raw=true)
-![sample 2] (https://github.com/MercedesSenties/ToolApp/sample2.jpg?raw=true)
+![sample 1] (https://github.com/MercedesSenties/ToolApp/blob/main/sample1.png)
+![sample 2] (https://github.com/MercedesSenties/ToolApp/blob/main/sample2.png)
