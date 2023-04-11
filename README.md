@@ -5,7 +5,7 @@
 
 <Description: Tool app for Unity. Goes through all the objects in the scene and lets you choose which ones you want to make prefabs.>
 
-[demo] (https://github.com/MercedesSRR/TelemetryApp)
+[demo] (https://github.com/MercedesSenties/ToolApp)
 
 
 # Download/Install
@@ -18,7 +18,7 @@
 
 # *** How to use ***
 ---------------------------------------
-<Instructions: 
+Instructions: 
 1. Navigate to the Tools menu
 2. Search for the Make Scene Objects Prefabs option and click on it. A pop up screen will show up
-3. Choose all the scene objects you want to make prefabs and click on the Make Prefabs button at the end of the screen>
+3. Choose all the scene objects you want to make prefabs and click on the Make Prefabs button at the end of the screen
