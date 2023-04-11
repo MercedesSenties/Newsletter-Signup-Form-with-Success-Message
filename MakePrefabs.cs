@@ -1,3 +1,5 @@
+//Copyright (C) Melissa Osorio and Mercedes Senties. All Rights Reserved
+
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
