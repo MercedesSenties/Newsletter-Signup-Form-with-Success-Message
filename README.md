@@ -22,3 +22,9 @@ Instructions:
 1. Navigate to the Tools menu
 2. Search for the Make Scene Objects Prefabs option and click on it. A pop up screen will show up
 3. Choose all the scene objects you want to make prefabs and click on the Make Prefabs button at the end of the screen
+
+
+# *** Sample Images ***
+---------------------------------------
+![sample 1] (https://github.com/MercedesSenties/ToolApp/sample1.jpg?raw=true)
+![sample 2] (https://github.com/MercedesSenties/ToolApp/sample2.jpg?raw=true)
