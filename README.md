@@ -1,30 +1,27 @@
-# PG23 T4 Pipelines - Tool App ***
----------------------------------------
-<Author: Mercedes Senties>
-<Date: April 11th>
+# Frontend Mentor - Newsletter sign-up form with success message solution
 
-<Description: Tool app for Unity. Goes through all the objects in the scene and lets you choose which ones you want to make prefabs.>
+This is a solution to the [Newsletter sign-up form with success message challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/newsletter-signup-form-with-success-message-3FC1AZbNrv). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-[demo] (https://github.com/MercedesSenties/ToolApp)
+## Table of contents
 
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
 
-# Download/Install
----------------------------------------
-1. Open a Unity Project
-2. Make a folder under Assets/Scripts called "Editor"
-3. Drag and drop the MakePrefabs.cs script into the new folder
-4. Let it compile 
+## Overview
+
+I managed to finish the Newsletter challenge using NetxJS and TailwindCSS. All of the requirements are in, just the placement of the validation message is different.
+
+Maybe if I would have included variables in the Form component (maybe the texts?) so it could work with whatever text you want and you could reuse it accross all the website. Also I added a change in opacity of the button when it's not "clickable".
 
 
-# *** How to use ***
----------------------------------------
-Instructions: 
-1. Navigate to the Tools menu
-2. Search for the Make Scene Objects Prefabs option and click on it. A pop up screen will show up
-3. Choose all the scene objects you want to make prefabs and click on the Make Prefabs button at the end of the screen
+### The challenge
 
+Users should be able to:
 
-# *** Sample Images ***
----------------------------------------
-![sample 1] (https://github.com/MercedesSenties/ToolApp/blob/main/sample1.png?raw=true)
-![sample 2] (https://github.com/MercedesSenties/ToolApp/blob/main/sample2.png?raw=true)
+- Add their email and submit the form
+- See a success message with their email after successfully submitting the form
+- See form validation messages if:
+  - The field is left empty
+  - The email address is not formatted correctly
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
