@@ -11,7 +11,7 @@ This is a solution to the [Newsletter sign-up form with success message challeng
 
 I managed to finish the Newsletter challenge using NetxJS and TailwindCSS. All of the requirements are in, just the placement of the validation message is different.
 
-Maybe if I would have included variables in the Form component (maybe the texts?) so it could work with whatever text you want and you could reuse it accross all the website. Also I added a change in opacity of the button when it's not "clickable".
+Maybe I would have liked to include variables in the Form component (maybe the texts?) so it could work with whatever text you want and you could reuse it across all the website. Also I added a change in opacity of the button when it's not "clickable".
 
 
 ### The challenge
