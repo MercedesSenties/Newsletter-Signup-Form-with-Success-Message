@@ -8,13 +8,8 @@ const [showPopup, setShowPopup] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [email, setEmail] = useState('');
 
-    //function to open the popup
-    const openPopup = () => {
-        setShowPopup(true);
-    };
-
     //function to handle form submission
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         try {
@@ -24,7 +19,7 @@ const [showPopup, setShowPopup] = useState(false);
         //store the email entered
         setEmail(enteredEmail); 
         
-        openPopup();
+        setShowPopup(true);
 
         } catch (error) {
         setErrorMessage('An error occurred. Please try again.');
@@ -91,8 +86,8 @@ const [showPopup, setShowPopup] = useState(false);
             <p className="text-red-600">{errorMessage}</p>
             )}
 
-            
         </form>
+            
     );
 };
 
