@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react';
+import { AiFillCheckCircle } from "react-icons/ai";
 
 const Form = () => {
 
@@ -60,7 +61,7 @@ const [showPopup, setShowPopup] = useState(false);
             type="submit"
 
             //i used the group class to disable the clicking of the button if something inside the form is invalid
-            className="font-bold text-white bg-[#242742] hover:bg-gradient-to-r from-[#FF527B] to-[#FE6939] rounded-lg text-sm px-5 py-4 text-center w-full mb-6 md:mb-0
+            className="font-bold text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 text-center w-full mb-6 md:mb-0
                     group-invalid:pointer-events-none
                     group-invalid:opacity-80"
             >
@@ -69,14 +70,14 @@ const [showPopup, setShowPopup] = useState(false);
 
             {/* Show the popup window*/}
             {showPopup && (
-                <div className="fixed top-0 left-0 right-0 flex justify-center items-center h-screen z-50 md:p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-[#36384e]">
+                <div className="fixed top-0 left-0 right-0 flex justify-center items-center h-screen z-50 md:p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-charcoal-grey">
                     <div className="flex flex-col bg-white border border-gray-200 md:rounded-2xl shadow text-sm md:max-w-lg md:max-h-fit p-10 h-full md:h-auto w-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><defs><linearGradient id="a" x1="100%" x2="0%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FF6A3A"/><stop offset="100%" stop-color="#FF527B"/></linearGradient></defs><g fill="none"><circle cx="32" cy="32" r="32" fill="url(#a)"/><path stroke="#FFF" stroke-width="4" d="m18.286 34.686 8.334 7.98 19.094-18.285"/></g></svg>                                
-                        <h1 className='font-bold text-5xl text-[#242742] py-4 mt-4'>Thanks for subscribing!</h1>                            
+                        <AiFillCheckCircle className="text-pink text-4xl"></AiFillCheckCircle>
+                        <h1 className='font-bold text-5xl text-dark-grey py-4 mt-4'>Thanks for subscribing!</h1>                            
                         <p className='font-regular text-sm'>A confirmation email has been sent to <span className='font-bold'>{email}</span>. Please open it and click the button inside to confirm your subscription.</p>
                         <button 
                             onClick={() => setShowPopup(false)}
-                            className="font-bold text-white bg-[#242742] hover:bg-gradient-to-r from-[#FF527B] to-[#FE6939] rounded-lg text-sm px-5 py-4 text-center w-full mt-10"
+                            className="font-bold text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 text-center w-full mt-10"
                         >
                             Dismiss message
                         </button>
