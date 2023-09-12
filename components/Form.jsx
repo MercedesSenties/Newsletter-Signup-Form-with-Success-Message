@@ -35,8 +35,8 @@ const [showPopup, setShowPopup] = useState(false);
         <form onSubmit={handleSubmit} className="w-full max-w-md group" noValidate>
             {/* Disable default validation with noValidate*/}
 
-            <div className="font-regular mb-6">
-                <label htmlFor="email" className="block mb-2 text-xs font-medium text-gray-900 font-bold">
+            <div className="font-roboto-regular mb-6">
+                <label htmlFor="email" className="block mb-2 text-xs text-gray-900 font-roboto-bold">
                     Email address
                 </label>
                 <input
@@ -53,7 +53,7 @@ const [showPopup, setShowPopup] = useState(false);
                     required
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                 />
-                <span class="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                <span className="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                     Valid email required
                 </span>
             </div>
@@ -61,7 +61,7 @@ const [showPopup, setShowPopup] = useState(false);
             type="submit"
 
             //i used the group class to disable the clicking of the button if something inside the form is invalid
-            className="font-bold text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 text-center w-full mb-6 md:mb-0
+            className="font-roboto-bold text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 text-center w-full mb-6 md:mb-0
                     group-invalid:pointer-events-none
                     group-invalid:opacity-80"
             >
@@ -70,14 +70,14 @@ const [showPopup, setShowPopup] = useState(false);
 
             {/* Show the popup window*/}
             {showPopup && (
-                <div className="fixed top-0 left-0 right-0 flex justify-center items-center h-screen z-50 md:p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-charcoal-grey">
+                <div className="fixed top-0 left-0 right-0 flex justify-center items-center h-screen z-50 md:p-4 overflow-x-hidden overflow-y-auto md:inset-0 bg-charcoal-grey">
                     <div className="flex flex-col bg-white border border-gray-200 md:rounded-2xl shadow text-sm md:max-w-lg md:max-h-fit p-10 h-full md:h-auto w-full">
                         <AiFillCheckCircle className="text-pink text-4xl"></AiFillCheckCircle>
-                        <h1 className='font-bold text-5xl text-dark-grey py-4 mt-4'>Thanks for subscribing!</h1>                            
-                        <p className='font-regular text-sm'>A confirmation email has been sent to <span className='font-bold'>{email}</span>. Please open it and click the button inside to confirm your subscription.</p>
+                        <h1 className='font-roboto-bold text-5xl text-dark-grey py-4 mt-4'>Thanks for subscribing!</h1>                            
+                        <p className='font-roboto-regular text-sm'>A confirmation email has been sent to <span className='font-roboto-bold'>{email}</span>. Please open it and click the button inside to confirm your subscription.</p>
                         <button 
                             onClick={() => setShowPopup(false)}
-                            className="font-bold text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 text-center w-full mt-10"
+                            className="font-roboto-bold text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 text-center w-full mt-10"
                         >
                             Dismiss message
                         </button>

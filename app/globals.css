@@ -29,7 +29,7 @@ body {
 	font-style: normal;
 }
 
-.font-regular {
+.font-roboto-regular {
 	font-family: 'RobotoRegular';
 }
 
@@ -41,6 +41,6 @@ body {
 	font-style: normal;
 }
 
-.font-bold {
+.font-roboto-bold {
 	font-family: 'RobotoBold';
 }

@@ -3,6 +3,7 @@ import DesktopImage from "../public/images/illustration-sign-up-desktop.svg"
 import MobileImage from "../public/images/illustration-sign-up-mobile.svg"
 import Form from "./Form"
 import { AiFillCheckCircle } from "react-icons/ai";
+import { listData } from '../data/listData.js';
 
 const CardSingle = () => {
     
@@ -14,30 +15,23 @@ const CardSingle = () => {
             <div className="md:hidden">
                 <Image
                 src={MobileImage}
-                className="w-auto max-h-min cursor-default mb-5"
+                className="w-auto max-h-min mb-5"
                 alt="Mobile Image"
                 />
             </div>
 
             <div className='px-12'>
                 <div>
-                    <h1 className='font-bold text-5xl text-dark-grey'>Stay updated!</h1>
+                    <h1 className='font-roboto-bold text-5xl text-dark-grey'>Stay updated!</h1>
                     <p className='py-4 text-sm'>Join 60,000+ product managers receiving monthly updates on:</p>
 
-
-                    <ul className="list-none pb-6 font-regular">
-                        <li className="flex md:items-center space-x-4 py-1">
-                            <AiFillCheckCircle className="text-pink text-2xl"></AiFillCheckCircle>
-                            <p>Product discovery and building what matters</p>
-                        </li>
-                        <li className="flex md:items-center space-x-4 py-1">
-                            <AiFillCheckCircle className="text-pink text-2xl"></AiFillCheckCircle>
-                            <p>Measuring to ensure updates are a success</p>
-                        </li>
-                        <li className="flex md:items-center space-x-4 py-1">
-                            <AiFillCheckCircle className="text-pink text-2xl"></AiFillCheckCircle>
-                            <p>And much more!</p>
-                        </li>
+                    <ul className="list-none pb-6 font-roboto-regular">
+                        {listData.map((data, index) => (
+                            <li className="flex md:items-center space-x-4 py-1" key={index}>
+                                <AiFillCheckCircle className="text-pink text-2xl" />
+                                <p>{data.text}</p>
+                            </li>
+                        ))}
                     </ul>
                 </div> 
                 
@@ -48,7 +42,7 @@ const CardSingle = () => {
             <div className="hidden md:block">
                 <Image
                 src={DesktopImage}
-                className="max-h-fit cursor-default p-5 pl-0"
+                className="max-h-fit p-5 pl-0"
                 alt="Desktop Image"
                 />
             </div>
