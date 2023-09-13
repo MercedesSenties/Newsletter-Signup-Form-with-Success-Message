@@ -11,54 +11,61 @@ const [showPopup, setShowPopup] = useState(false);
     //function to handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
-
+    
         try {
-        //get the email value from the input field
-        const enteredEmail = e.target.email.value;
-
-        //store the email entered
-        setEmail(enteredEmail); 
-        
-        setShowPopup(true);
-
+            //get the email value from the input field
+            const enteredEmail = e.target.email.value;
+    
+            //validate the email format
+            const emailPattern = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+            if (!enteredEmail.match(emailPattern)) {
+                setErrorMessage('Valid email required');
+                return; //don't proceed further if email is invalid
+            }
+    
+            //store the email entered
+            setEmail(enteredEmail);
+    
+            //show the success popup
+            setShowPopup(true);
         } catch (error) {
-        setErrorMessage('An error occurred. Please try again.');
+            setErrorMessage('An error occurred. Please try again.');
         }
     };
+    
 
     return (
         <form onSubmit={handleSubmit} className="w-full max-w-md group" noValidate>
             {/* Disable default validation with noValidate*/}
 
             <div className="font-roboto-regular mb-6">
-                <label htmlFor="email" className="block mb-2 text-xs text-gray-900 font-roboto-bold">
-                    Email address
-                </label>
+                <div className='flex flex-column justify-between'>
+                    <label htmlFor="email" className="block mb-2 text-xs text-gray-900 font-roboto-bold">
+                        Email address
+                    </label>
+                    {/* Display error message */}
+                    {errorMessage && (
+                        <p className="text-xs text-red">{errorMessage}</p>
+                    )}
+                </div>
                 <input
                     type="email"
                     id="email"
                     
-                    //i used the peer class to show the error message based on the validation of the email. If it's invalid and is not empty or focused, then it'll be shown
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
-                    invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500 
-                    invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-500 
-                    invalid:[&:not(:placeholder-shown):not(:focus)]:bg-opacity-30 
-                    peer"
+                    invalid:[&:not(:placeholder-shown):not(:focus)]:border-red 
+                    invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red 
+                    invalid:[&:not(:placeholder-shown):not(:focus)]:bg-opacity-30"
                     placeholder="email@company.com"
                     required
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                 />
-                <span className="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-                    Valid email required
-                </span>
             </div>
             <button
             type="submit"
 
             //i used the group class to disable the clicking of the button if something inside the form is invalid
             className="font-roboto-bold text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 text-center w-full mb-6 md:mb-0
-                    group-invalid:pointer-events-none
-                    group-invalid:opacity-80"
+                    group-invalid:cursor-not-allowed"
             >
             Subscribe to monthly newsletter
             </button>
@@ -79,11 +86,6 @@ const [showPopup, setShowPopup] = useState(false);
                     </div>
                 </div>
                 
-            )}
-
-            {/* Display error message */}
-            {errorMessage && (
-            <p className="text-red-600">{errorMessage}</p>
             )}
 
         </form>

@@ -21,6 +21,7 @@ const config: Config = {
       'white': 'hsl(0, 0%, 100%)',
       'pink': '#FF527B',
       'orange': '#FE6939',
+      'red': '#e80e0e'
     }
   },
   plugins: [],
