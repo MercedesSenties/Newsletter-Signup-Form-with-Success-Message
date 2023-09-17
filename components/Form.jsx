@@ -1,6 +1,10 @@
 'use client'
 import { useState } from 'react';
 import { AiFillCheckCircle } from "react-icons/ai";
+import Image from 'next/image';
+import DesktopImage from "../public/images/illustration-sign-up-desktop.svg"
+import MobileImage from "../public/images/illustration-sign-up-mobile.svg"
+import { listData } from '../data/listData.js';
 
 const Form = () => {
 
@@ -35,44 +39,10 @@ const [showPopup, setShowPopup] = useState(false);
     
 
     return (
-        <form onSubmit={handleSubmit} className="w-full max-w-md group" noValidate>
-            {/* Disable default validation with noValidate*/}
-
-            <div className="font-roboto-regular mb-6">
-                <div className='flex flex-column justify-between'>
-                    <label htmlFor="email" className="block mb-2 text-xs text-gray-900 font-roboto-bold">
-                        Email address
-                    </label>
-                    {/* Display error message */}
-                    {errorMessage && (
-                        <p className="text-xs text-red">{errorMessage}</p>
-                    )}
-                </div>
-                <input
-                    type="email"
-                    id="email"
-                    
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
-                    invalid:[&:not(:placeholder-shown):not(:focus)]:border-red 
-                    invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red 
-                    invalid:[&:not(:placeholder-shown):not(:focus)]:bg-opacity-30"
-                    placeholder="email@company.com"
-                    required
-                />
-            </div>
-            <button
-            type="submit"
-
-            //i used the group class to disable the clicking of the button if something inside the form is invalid
-            className="font-roboto-bold text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 text-center w-full mb-6 md:mb-0
-                    group-invalid:cursor-not-allowed"
-            >
-            Subscribe to monthly newsletter
-            </button>
-
-            {/* Show the popup window*/}
-            {showPopup && (
-                <div className="fixed top-0 left-0 right-0 flex justify-center items-center h-screen z-50 md:p-4 overflow-x-hidden overflow-y-auto md:inset-0 bg-charcoal-grey">
+        <div>         
+            {/* Show the popup window when true and hide the newsletter box*/}
+            {showPopup ? (
+                <div className="fixed top-0 left-0 right-0 flex justify-center items-center h-screen z-50 md:p-4 overflow-x-hidden overflow-y-auto md:inset-0 ">
                     <div className="flex flex-col bg-white border border-gray-200 md:rounded-2xl shadow text-sm md:max-w-lg md:max-h-fit p-10 h-full md:h-auto w-full">
                         <AiFillCheckCircle className="text-pink text-4xl"></AiFillCheckCircle>
                         <h1 className='font-roboto-bold text-5xl text-dark-grey py-4 mt-4'>Thanks for subscribing!</h1>                            
@@ -86,10 +56,80 @@ const [showPopup, setShowPopup] = useState(false);
                     </div>
                 </div>
                 
-            )}
+            ) : (
+            <div className="flex flex-col items-center bg-white border border-gray-200 md:rounded-2xl shadow text-sm md:flex-row md:max-w-4xl md:max-h-fit">
+                {/*Render the mobile image on top of the text*/}
+                <div className="md:hidden">
+                    <Image
+                    src={MobileImage}
+                    className="w-auto max-h-min mb-5"
+                    alt="Mobile Image"
+                    />
+                </div>
 
-        </form>
-            
+                <div className='px-12'>
+                    <div>
+                        <h1 className='font-roboto-bold text-5xl text-dark-grey'>Stay updated!</h1>
+                        <p className='py-4 text-sm'>Join 60,000+ product managers receiving monthly updates on:</p>
+
+                        <ul className="list-none pb-6 font-roboto-regular">
+                            {listData.map((data, index) => (
+                                <li className="flex md:items-center space-x-4 py-1" key={index}>
+                                    <AiFillCheckCircle className="text-pink text-2xl" />
+                                    <p>{data.text}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div> 
+                    
+                    <form onSubmit={handleSubmit} className="w-full max-w-md group" noValidate>
+                        {/* Disable default validation with noValidate*/}
+
+                        <div className="font-roboto-regular mb-6">
+                            <div className='flex flex-column justify-between'>
+                                <label htmlFor="email" className="block mb-2 text-xs text-gray-900 font-roboto-bold">
+                                    Email address
+                                </label>
+                                {/* Display error message */}
+                                {errorMessage && (
+                                    <p className="text-xs text-red">{errorMessage}</p>
+                                )}
+                            </div>
+                            <input
+                                type="email"
+                                id="email"
+                                
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+                                invalid:[&:not(:placeholder-shown):not(:focus)]:border-red 
+                                invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red 
+                                invalid:[&:not(:placeholder-shown):not(:focus)]:bg-opacity-30"
+                                placeholder="email@company.com"
+                                required
+                            />
+                        </div>
+                        <button
+                        type="submit"
+
+                        //i used the group class to disable the clicking of the button if something inside the form is invalid
+                        className="font-roboto-bold text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 text-center w-full mb-6 md:mb-0
+                                group-invalid:cursor-not-allowed"
+                        >
+                        Subscribe to monthly newsletter
+                        </button>
+                    </form>            
+                </div>
+
+                {/* Render the desktop image on the right*/}
+                <div className="hidden md:block">
+                    <Image
+                    src={DesktopImage}
+                    className="max-h-fit p-5 pl-0"
+                    alt="Desktop Image"
+                    />
+                </div>
+            </div>
+            )}
+        </div>          
     );
 };
 

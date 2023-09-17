@@ -1,9 +1,9 @@
-import CardSingle from "../components/CardSingle"
+import Form from "../components/Form.jsx"
 
 export default function Home() {
   return (
     <div className="flex justify-center items-center h-screen">
-      <CardSingle></CardSingle>
+      <Form></Form>
     </div>
   )
 }
