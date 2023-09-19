@@ -2,38 +2,44 @@
 import { useState } from 'react';
 import { AiFillCheckCircle } from "react-icons/ai";
 import Image from 'next/image';
-import DesktopImage from "../public/images/illustration-sign-up-desktop.svg"
-import MobileImage from "../public/images/illustration-sign-up-mobile.svg"
-import { listData } from '../data/listData.js';
+import DesktopImage from "/public/images/illustration-sign-up-desktop.svg"
+import MobileImage from "/public/images/illustration-sign-up-mobile.svg"
+import { listData } from '/data/listData.js';
 
 const Form = () => {
 
 const [showPopup, setShowPopup] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [email, setEmail] = useState('');
+    const [invalid, isInvalidEmail] = useState('');
+
+    const handleEmailChange = (e) => {
+        const enteredEmail = e.target.value;
+        const emailPattern = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+        if (!enteredEmail.match(emailPattern)) {
+            setErrorMessage('Valid email required');
+            isInvalidEmail(true);
+        } else {
+            setErrorMessage('');
+            isInvalidEmail(false);
+        }
+    };
 
     //function to handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
     
         try {
-            //get the email value from the input field
-            const enteredEmail = e.target.email.value;
-    
-            //validate the email format
-            const emailPattern = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-            if (!enteredEmail.match(emailPattern)) {
-                setErrorMessage('Valid email required');
-                return; //don't proceed further if email is invalid
+            if(!invalid && e.target.email.value != '') {
+                //show the success popup
+                setShowPopup(true);
             }
     
-            //store the email entered
-            setEmail(enteredEmail);
-    
-            //show the success popup
-            setShowPopup(true);
-        } catch (error) {
-            setErrorMessage('An error occurred. Please try again.');
+            //set the last email entered
+            setEmail(e.target.email.value);  
+        }
+        catch {
+            setErrorMessage('An error occurred, please try again');
         }
     };
     
@@ -42,7 +48,7 @@ const [showPopup, setShowPopup] = useState(false);
         <div>         
             {/* Show the popup window when true and hide the newsletter box*/}
             {showPopup ? (
-                <div className="fixed top-0 left-0 right-0 flex justify-center items-center h-screen z-50 md:p-4 overflow-x-hidden overflow-y-auto md:inset-0 ">
+                <div className="flex justify-center items-center h-screen z-50 md:p-4 overflow-x-hidden overflow-y-auto md:inset-0 ">
                     <div className="flex flex-col bg-white border border-gray-200 md:rounded-2xl shadow text-sm md:max-w-lg md:max-h-fit p-10 h-full md:h-auto w-full">
                         <AiFillCheckCircle className="text-pink text-4xl"></AiFillCheckCircle>
                         <h1 className='font-roboto-bold text-5xl text-dark-grey py-4 mt-4'>Thanks for subscribing!</h1>                            
@@ -57,12 +63,12 @@ const [showPopup, setShowPopup] = useState(false);
                 </div>
                 
             ) : (
-            <div className="flex flex-col items-center bg-white border border-gray-200 md:rounded-2xl shadow text-sm md:flex-row md:max-w-4xl md:max-h-fit">
+            <div className="flex flex-col items-center bg-white border border-gray-200 md:rounded-2xl shadow h-full text-sm md:flex-row md:max-w-4xl md:max-h-fit">
                 {/*Render the mobile image on top of the text*/}
                 <div className="md:hidden">
                     <Image
                     src={MobileImage}
-                    className="w-auto max-h-min mb-5"
+                    className="w-auto mb-5"
                     alt="Mobile Image"
                     />
                 </div>
@@ -98,7 +104,7 @@ const [showPopup, setShowPopup] = useState(false);
                             <input
                                 type="email"
                                 id="email"
-                                
+                                onChange={handleEmailChange}
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
                                 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red 
                                 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red 
@@ -111,8 +117,9 @@ const [showPopup, setShowPopup] = useState(false);
                         type="submit"
 
                         //i used the group class to disable the clicking of the button if something inside the form is invalid
-                        className="font-roboto-bold text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 text-center w-full mb-6 md:mb-0
-                                group-invalid:cursor-not-allowed"
+                        className={`font-roboto-bold text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 text-center w-full mb-6 md:mb-0 ${
+                            invalid ? 'cursor-not-allowed' : '' // Apply cursor-not-allowed class when email is invalid
+                        }`}
                         >
                         Subscribe to monthly newsletter
                         </button>

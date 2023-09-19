@@ -610,6 +610,9 @@ video {
   max-height: -moz-min-content;
   max-height: min-content;
 }
+.max-h-full {
+  max-height: 100%;
+}
 .w-auto {
   width: auto;
 }
@@ -618,6 +621,9 @@ video {
 }
 .max-w-md {
   max-width: 28rem;
+}
+.cursor-not-allowed {
+  cursor: not-allowed;
 }
 .list-none {
   list-style-type: none;
@@ -650,10 +656,6 @@ video {
 }
 .border {
   border-width: 1px;
-}
-.bg-charcoal-grey {
-  --tw-bg-opacity: 1;
-  background-color: hsl(235 18% 26% / var(--tw-bg-opacity));
 }
 .bg-dark-grey {
   --tw-bg-opacity: 1;
