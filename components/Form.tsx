@@ -74,7 +74,10 @@ const Form: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center bg-white border border-gray-200 md:rounded-2xl shadow h-full text-sm md:flex-row md:max-w-4xl md:max-h-fit">
+        <div
+          className="flex flex-col items-center bg-white border border-gray-200 md:rounded-2xl 
+        shadow h-full text-sm md:flex-row md:max-w-3xl md:max-h-fit lg:max-w-4xl"
+        >
           {/*Render the mobile image on top of the text*/}
           <div className="md:hidden">
             <Image
