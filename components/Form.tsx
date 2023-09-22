@@ -11,8 +11,6 @@ const Form: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [invalidEmail, isInvalidEmail] = useState<boolean>(false);
-  const [buttonOpacity, setButtonOpacity] = useState<number>(100);
-  const [cursorStyle, setCursorStyle] = useState<string>("pointer");
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const enteredEmail = e.target.value;
@@ -21,21 +19,15 @@ const Form: React.FC = () => {
     if (!enteredEmail.match(emailPattern)) {
       isInvalidEmail(true);
       setErrorMessage("Valid email required");
-      //set button/cursor styles dinamically depending on email validation
-      setButtonOpacity(40);
-      setCursorStyle("not-allowed");
     } else {
       isInvalidEmail(false);
       setErrorMessage("");
-      setButtonOpacity(100);
-      setCursorStyle("pointer");
     }
   };
 
   //function to handle form submission
-  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     try {
       if (!invalidEmail && e.target.email.value != "") {
         //show the success popup
@@ -133,10 +125,12 @@ const Form: React.FC = () => {
                   type="email"
                   id="email"
                   onBlur={handleEmailChange}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
-                                invalid:[&:not(:placeholder-shown):not(:focus)]:border-wild-watermelon-700 
-                                invalid:[&:not(:placeholder-shown):not(:focus)]:bg-wild-watermelon-700 
-                                invalid:[&:not(:placeholder-shown):not(:focus)]:bg-opacity-30"
+                  className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+                                invalid:[&:not(:placeholder-shown):not(:focus)]:border-wild-watermelon-700 ${
+                                  invalidEmail
+                                    ? "bg-wild-watermelon-700 bg-opacity-30"
+                                    : ""
+                                }`}
                   placeholder="email@company.com"
                   required
                 />
@@ -144,8 +138,10 @@ const Form: React.FC = () => {
               <button
                 type="submit"
                 //i used the group class to disable the clicking of the button if something inside the form is invalid
-                className={`font-roboto-bold cursor-${cursorStyle} text-wild-watermelon-50 bg-dark-grey hover:bg-gradient-to-r from-wild-watermelon to-orange rounded-lg text-sm px-5 py-4 
-                  text-center w-full mb-6 md:mb-0 opacity-${buttonOpacity}`}
+                className={`font-roboto-bold text-wild-watermelon-50 bg-dark-grey hover:bg-gradient-to-r from-wild-watermelon to-orange rounded-lg text-sm px-5 py-4 
+                  text-center w-full mb-6 md:mb-0 ${
+                    invalidEmail ? "opacity-40 cursor-not-allowed" : ""
+                  }`}
               >
                 Subscribe to monthly newsletter
               </button>
