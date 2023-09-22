@@ -1,7 +1,7 @@
 {
-    "prettier.bracketSameLine": true,
-    "prettier.singleAttributePerLine": true,
-    "prettier.singleQuote": true,
-    "prettier.useTabs": true,
-    "prettier.withNodeModules": true
+  "prettier.bracketSameLine": true,
+  "prettier.singleAttributePerLine": true,
+  "prettier.singleQuote": true,
+  "prettier.useTabs": true,
+  "prettier.withNodeModules": true
 }
