@@ -10,18 +10,25 @@ const Form: React.FC = () => {
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [invalid, isInvalidEmail] = useState<boolean>(false);
+  const [invalidEmail, isInvalidEmail] = useState<boolean>(false);
+  const [buttonOpacity, setButtonOpacity] = useState<number>(100);
+  const [cursorStyle, setCursorStyle] = useState<string>("pointer");
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const enteredEmail = e.target.value;
     const emailPattern = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
     if (!enteredEmail.match(emailPattern)) {
-      setErrorMessage("Valid email required");
       isInvalidEmail(true);
+      setErrorMessage("Valid email required");
+      //set button/cursor styles dinamically depending on email validation
+      setButtonOpacity(40);
+      setCursorStyle("not-allowed");
     } else {
-      setErrorMessage("");
       isInvalidEmail(false);
+      setErrorMessage("");
+      setButtonOpacity(100);
+      setCursorStyle("pointer");
     }
   };
 
@@ -30,7 +37,7 @@ const Form: React.FC = () => {
     e.preventDefault();
 
     try {
-      if (!invalid && e.target.email.value != "") {
+      if (!invalidEmail && e.target.email.value != "") {
         //show the success popup
         setShowPopup(true);
       }
@@ -53,7 +60,7 @@ const Form: React.FC = () => {
             <h1 className="font-roboto-bold text-5xl py-4 mt-4">
               Thanks for subscribing!
             </h1>
-            <p className="font-roboto-regular text-sm">
+            <p className="text-sm">
               A confirmation email has been sent to{" "}
               <span className="font-roboto-bold">{email}</span>. Please open it
               and click the button inside to confirm your subscription.
@@ -84,7 +91,7 @@ const Form: React.FC = () => {
                 Join 60,000+ product managers receiving monthly updates on:
               </p>
 
-              <ul className="list-none pb-6 font-roboto-regular">
+              <ul className="list-none pb-6">
                 {listData.map((data: ListItem, index) => (
                   <li
                     className="flex md:items-center space-x-4 py-1"
@@ -104,7 +111,7 @@ const Form: React.FC = () => {
             >
               {/* Disable default validation with noValidate*/}
 
-              <div className="font-roboto-regular mb-6">
+              <div className="mb-6">
                 <div className="flex flex-column justify-between">
                   <label
                     htmlFor="email"
@@ -132,9 +139,8 @@ const Form: React.FC = () => {
               <button
                 type="submit"
                 //i used the group class to disable the clicking of the button if something inside the form is invalid
-                className={`font-roboto-bold text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 text-center w-full mb-6 md:mb-0 ${
-                  invalid ? "cursor-not-allowed" : "" // Apply cursor-not-allowed class when email is invalid
-                }`}
+                className={`font-roboto-bold cursor-${cursorStyle} text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 
+                  text-center w-full mb-6 md:mb-0 opacity-${buttonOpacity}`}
               >
                 Subscribe to monthly newsletter
               </button>
