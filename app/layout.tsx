@@ -1,11 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Newsletter LogIn",
+  title: "Newsletter Signup",
   description: "Trial task from Frontend Mentor community",
 };
 
@@ -16,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="font-roboto-regular">{children}</body>
     </html>
   );
 }
