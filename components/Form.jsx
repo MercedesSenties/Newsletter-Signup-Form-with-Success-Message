@@ -45,13 +45,13 @@ const [showPopup, setShowPopup] = useState(false);
     
 
     return (
-        <div>         
+        <div className='bg-charcoal-grey'>         
             {/* Show the popup window when true and hide the newsletter box*/}
             {showPopup ? (
                 <div className="flex justify-center items-center h-screen z-50 md:p-4 overflow-x-hidden overflow-y-auto md:inset-0 ">
-                    <div className="flex flex-col bg-white border border-gray-200 md:rounded-2xl shadow text-sm md:max-w-lg md:max-h-fit p-10 h-full md:h-auto w-full">
+                    <div className="text-dark-grey flex flex-col bg-white border border-gray-200 md:rounded-2xl shadow text-sm md:max-w-lg md:max-h-fit p-10 h-full md:h-auto w-full">
                         <AiFillCheckCircle className="text-pink text-4xl"></AiFillCheckCircle>
-                        <h1 className='font-roboto-bold text-5xl text-dark-grey py-4 mt-4'>Thanks for subscribing!</h1>                            
+                        <h1 className='font-roboto-bold text-5xl py-4 mt-4'>Thanks for subscribing!</h1>                            
                         <p className='font-roboto-regular text-sm'>A confirmation email has been sent to <span className='font-roboto-bold'>{email}</span>. Please open it and click the button inside to confirm your subscription.</p>
                         <button 
                             onClick={() => setShowPopup(false)}
@@ -73,9 +73,9 @@ const [showPopup, setShowPopup] = useState(false);
                     />
                 </div>
 
-                <div className='px-12'>
+                <div className='px-12 text-dark-grey'>
                     <div>
-                        <h1 className='font-roboto-bold text-5xl text-dark-grey'>Stay updated!</h1>
+                        <h1 className='font-roboto-bold text-5xl'>Stay updated!</h1>
                         <p className='py-4 text-sm'>Join 60,000+ product managers receiving monthly updates on:</p>
 
                         <ul className="list-none pb-6 font-roboto-regular">
@@ -104,7 +104,7 @@ const [showPopup, setShowPopup] = useState(false);
                             <input
                                 type="email"
                                 id="email"
-                                onChange={handleEmailChange}
+                                onBlur={handleEmailChange}
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
                                 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red 
                                 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red 

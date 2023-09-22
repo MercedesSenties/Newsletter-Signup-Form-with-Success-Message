@@ -15,10 +15,10 @@ const config: Config = {
       },
     },
     colors: {
-      'dark-grey': 'hsl(234, 29%, 20%)',
-      'charcoal-grey': 'hsl(235, 18%, 26%)',
-      'grey': 'hsl(231, 7%, 60%)',
-      'white': 'hsl(0, 0%, 100%)',
+      'dark-grey': '#242742',
+      'charcoal-grey': '#36384e',
+      'grey': '#9294a0',
+      'white': '#ffffff',
       'pink': '#FF527B',
       'orange': '#FE6939',
       'red': '#e80e0e'
