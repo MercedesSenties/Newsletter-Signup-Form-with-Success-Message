@@ -55,8 +55,8 @@ const Form: React.FC = () => {
       {/* Show the popup window when true and hide the newsletter box*/}
       {showPopup ? (
         <div className="flex justify-center items-center h-screen z-50 md:p-4 overflow-x-hidden overflow-y-auto md:inset-0 ">
-          <div className="text-dark-grey flex flex-col bg-white border border-gray-200 md:rounded-2xl shadow text-sm md:max-w-lg md:max-h-fit p-10 h-full md:h-auto w-full">
-            <AiFillCheckCircle className="text-pink text-4xl"></AiFillCheckCircle>
+          <div className="text-dark-grey flex flex-col bg-wild-watermelon-50 border border-gray-200 md:rounded-2xl shadow text-sm md:max-w-lg md:max-h-fit p-10 h-full md:h-auto w-full">
+            <AiFillCheckCircle className="text-wild-watermelon text-4xl"></AiFillCheckCircle>
             <h1 className="font-roboto-bold text-5xl py-4 mt-4">
               Thanks for subscribing!
             </h1>
@@ -67,7 +67,7 @@ const Form: React.FC = () => {
             </p>
             <button
               onClick={() => setShowPopup(false)}
-              className="font-roboto-bold text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 text-center w-full mt-10"
+              className="font-roboto-bold text-wild-watermelon-50 bg-dark-grey hover:bg-gradient-to-r from-wild-watermelon to-orange rounded-lg text-sm px-5 py-4 text-center w-full mt-10"
             >
               Dismiss message
             </button>
@@ -75,7 +75,7 @@ const Form: React.FC = () => {
         </div>
       ) : (
         <div
-          className="flex flex-col items-center bg-white border border-gray-200 md:rounded-2xl 
+          className="flex flex-col items-center bg-wild-watermelon-50 border border-gray-200 md:rounded-2xl 
         shadow h-full text-sm md:flex-row md:max-w-3xl md:max-h-fit lg:max-w-4xl"
         >
           {/*Render the mobile image on top of the text*/}
@@ -100,7 +100,7 @@ const Form: React.FC = () => {
                     className="flex md:items-center space-x-4 py-1"
                     key={index}
                   >
-                    <AiFillCheckCircle className="text-pink text-2xl" />
+                    <AiFillCheckCircle className="text-wild-watermelon text-2xl" />
                     <p>{data.text}</p>
                   </li>
                 ))}
@@ -124,7 +124,9 @@ const Form: React.FC = () => {
                   </label>
                   {/* Display error message */}
                   {errorMessage && (
-                    <p className="text-xs text-red">{errorMessage}</p>
+                    <p className="text-xs text-wild-watermelon-700">
+                      {errorMessage}
+                    </p>
                   )}
                 </div>
                 <input
@@ -132,8 +134,8 @@ const Form: React.FC = () => {
                   id="email"
                   onBlur={handleEmailChange}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
-                                invalid:[&:not(:placeholder-shown):not(:focus)]:border-red 
-                                invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red 
+                                invalid:[&:not(:placeholder-shown):not(:focus)]:border-wild-watermelon-700 
+                                invalid:[&:not(:placeholder-shown):not(:focus)]:bg-wild-watermelon-700 
                                 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-opacity-30"
                   placeholder="email@company.com"
                   required
@@ -142,7 +144,7 @@ const Form: React.FC = () => {
               <button
                 type="submit"
                 //i used the group class to disable the clicking of the button if something inside the form is invalid
-                className={`font-roboto-bold cursor-${cursorStyle} text-white bg-dark-grey hover:bg-gradient-to-r from-pink to-orange rounded-lg text-sm px-5 py-4 
+                className={`font-roboto-bold cursor-${cursorStyle} text-wild-watermelon-50 bg-dark-grey hover:bg-gradient-to-r from-wild-watermelon to-orange rounded-lg text-sm px-5 py-4 
                   text-center w-full mb-6 md:mb-0 opacity-${buttonOpacity}`}
               >
                 Subscribe to monthly newsletter
