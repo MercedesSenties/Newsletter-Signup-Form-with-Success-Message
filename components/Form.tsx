@@ -39,6 +39,7 @@ const Form: React.FC = () => {
       setEmail(e.target.email.value);
     } catch {
       setErrorMessage("An error occurred, please try again");
+      setShowPopup(false);
     }
   };
 
